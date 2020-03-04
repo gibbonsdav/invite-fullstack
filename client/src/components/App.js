@@ -1,13 +1,18 @@
 import React from "react"
-import { useExample } from "../hooks"
+import { BrowserRouter as Router, Route } from "react-router-dom"
+import { useUser } from "../hooks"
+import Going from "./Going"
+import Notgoing from "./Notgoing"
+import Invite from "./Invite"
 
 export default props => {
-  const { foo, get } = useExample()
-
   return (
-    <div>
-      <h1>Hello World {foo}</h1>
-      <button onClick={e => get()}>GET</button>
-    </div>
+    <Router>
+      <div className="wrapper">
+        <Route exact path="/" component={Invite} />
+        <Route path="/going" component={Going} />
+        <Route path="/notgoing" component={Notgoing} />
+      </div>
+    </Router>
   )
 }
